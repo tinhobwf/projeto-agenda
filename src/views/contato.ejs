@@ -1,0 +1,62 @@
+<%- include('includes/header'); %>
+<%- include('includes/nav'); %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 my-5">
+      <h1 class="display-1 text-center">Contato</h1>
+
+      <% if(!contato._id) { %>
+        <p class="text-center lead">Crie o seu contato.</p>
+      <% } else { %>
+        <p class="text-center lead">Edite o seu contato.</p>
+      <% } %>
+
+      <%- include('includes/messages') %>
+
+      <div class="row my-5">
+        <div class="col-lg">
+          <% if(!contato._id) { %>
+            <form action="/contato/register" method="POST" class="my-5">
+          <% } else { %>
+            <form action="/contato/edit/<%= contato._id %>" method="POST" class="my-5">
+          <% } %>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input value="<%= contato.nome %>" type="text" class="form-control" name="nome" placeholder="Escreva o nome do contato aqui.">
+                </div>
+
+                <div class="form-group">
+                    <label>Sobrenome</label>
+                    <input value="<%= contato.sobrenome %>" type="text" class="form-control" name="sobrenome" placeholder="Escreva o sobrenome do contato aqui.">
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input value="<%= contato.email %>" type="email" class="form-control" name="email" placeholder="Escreva o email do contato aqui.">
+                </div>
+
+                <div class="form-group">
+                    <label>Telefone</label>
+                    <input value="<%= contato.telefone %>" type="tel" class="form-control" name="telefone" placeholder="Escreva o telefone do contato aqui.">
+                </div>
+
+                <% if(!contato._id) { %>
+                  <button type="submit" class="btn btn-primary my-3">Salvar</button>
+                <% } else { %>
+                  <button type="submit" class="btn btn-primary my-3">Editar</button>
+                <% } %>
+            </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<%- include('includes/footer'); %>
