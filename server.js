@@ -46,8 +46,8 @@ app.use(csrfMiddleware);
 app.use(routes);
 
 app.on('pronto', () => { //apenas depois do evento 'pronto' ser emitido isso sera executado.
-  app.listen(3003, () => { //vai ouvir o servidor na porta 3003
-    console.log('Acessar http://localhost:3003');
-    console.log('Servidor executando na porta 3003');
+  app.listen(3000, () => { //vai ouvir o servidor na porta 3000
+    console.log('Acessar http://localhost:3000');
+    console.log('Servidor executando na porta 3000');
   });
 });
